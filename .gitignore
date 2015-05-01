@@ -30,3 +30,4 @@ lib/httpd/public_html/bower_lib/*
 #db
 lib/db/data/*
 
+ftp/*

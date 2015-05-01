@@ -5,7 +5,7 @@
 		<div class="glyphicon glyphicon-minus" ng-click="node.nodes=undefined" ng-show="node.nodes && node.nodes.length"></div>
 		<a ng-click="refresh(node)" style="{{node.removed ? 'text-decoration: line-through':''}} {{node._id ? '' : 'color : #5cb85c' }}">{{nameFromPath(node.path)}}</a>
 		<div class="glyphicon glyphicon-edit" ng-click="node.showDetails=!node.showDetails" ng-show="!node.showDetails"></div>
-		<div class="glyphicon glyphicon-plus" ng-click="add(node)" ng-show="node.nodes && node.nodes.length == 0"></div>
+		<div class="glyphicon glyphicon-plus" ng-click="add(node)" ng-show="node.nodes"></div>
 	</span>
 
 	<div ng-include="'tree_item_details_renderer.html'" />
