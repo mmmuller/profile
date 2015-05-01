@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>mmAnalytics</title>
+	<link rel="stylesheet" href="bower_lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_lib/bootstrap/dist/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/tree.css">
+
+	<script src="bower_lib/jquery/dist/jquery.min.js"></script>
+	<script src="bower_lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_lib/angular/angular.js"></script>
+	<script src="bower_lib/angular-route/angular-route.js"></script>
+
+	<script src="src/profile/profileService.js"></script>
+	<script src="src/profile/global/global.js"></script>
+	<script src="src/profile/init/init.js"></script>
+	<script src="src/app.js"></script>
+</head>
+<body ng-app='app'>
+	<a href="profile">/profile</a>
+
+	<ul class="nav nav-pills">
+		<li class="active"><a href="#/welcome">Home</a></li>
+		<li class><a href="#/profile/global">Global</a></li>
+		<li><a href="#/profile/init">Profile init</a></li>
+	</ul>
+
+	<div ng-view></div>
+
+</body>
+</html>

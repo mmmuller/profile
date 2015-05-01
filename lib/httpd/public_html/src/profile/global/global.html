@@ -1,0 +1,80 @@
+
+<script type="text/ng-template"  id="tree_item_renderer.html">
+
+	<span> 
+		<div class="glyphicon glyphicon-minus" ng-click="node.nodes=undefined" ng-show="node.nodes && node.nodes.length"></div>
+		<a ng-click="refresh(node)" style="{{node.removed ? 'text-decoration: line-through':''}} {{node._id ? '' : 'color : #5cb85c' }}">{{nameFromPath(node.path)}}</a>
+		<div class="glyphicon glyphicon-edit" ng-click="node.showDetails=!node.showDetails" ng-show="!node.showDetails"></div>
+		<div class="glyphicon glyphicon-plus" ng-click="add(node)" ng-show="node.nodes && node.nodes.length == 0"></div>
+	</span>
+
+	<div ng-include="'tree_item_details_renderer.html'" />
+	<ul>
+		<li ng-repeat="node in node.nodes" ng-include="'tree_item_renderer.html'"></li>
+	</ul>
+
+</script>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Global TREE</div>	
+	<div class="panel-body">
+
+		<div class="tree">
+			<ul >
+				<li ng-repeat="node in tree" ng-include="'tree_item_renderer.html'"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/ng-template"  id="tree_item_details_renderer.html">
+	<div class="panel panel-default" ng-show="node.showDetails">
+		<div class="panel-heading">Node properties</div>	
+		<div class="panel-body">
+
+			<div class="col-md-4 form-group">
+				<label for="textbox1">Id</label>
+				<input class="form-control" id="textbox1" type="text" readonly ng-model="node._id"/>
+			</div>
+			<div class="col-md-4 form-group">
+				<label for="textbox2">Path</label>
+				<input class="form-control" id="textbox2" type="text" ng-readonly="node._id" ng-model="node.path"/>
+			</div>
+
+			<div class="col-md-4 form-group">
+				<label for="textbox2">Type</label>
+				<!--<input class="form-control" id="textbox3" type="text" value="{{node.type}}"/> -->
+				<select class="form-control" id="sel1" ng-model="node.type">
+					<option>string</option>
+					<option>bool</option>
+					<option>int</option>
+					<option>long</option>
+					<option>link</option>
+				</select>
+			</div>
+			<div class="col-md-12 form-group">
+				<label for="textbox2">Value</label>
+				<input class="form-control" id="textbox2" type="text" ng-model="node.value"/>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-offset-5 col-sm-3 text-center">
+					<button type="button" class="btn btn-danger" ng-click="remove(node)" ng-show="node.nodes && node.nodes.length==0">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="save(node)" >
+						<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+					</button>
+					<button type="button" class="btn btn-success" ng-click="cancel(node)">
+						<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span> Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</script>
+
+
